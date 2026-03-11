@@ -85,7 +85,7 @@ export function About() {
         </a>
 
         <Link
-          to="/Home"
+          to="/home"
           className="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-900 transition-colors duration-200 ml-4"
         >
           ← Back to Home

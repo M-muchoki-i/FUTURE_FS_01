@@ -2,21 +2,13 @@
 import { useState, useEffect } from "react";
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-      phone: "",
-    message:"",
+  const [formData, setFormData] = useState(() => {
+    const saved = localStorage.getItem("contact-form");
+    return saved
+      ? JSON.parse(saved)
+      : { name: "", email: "", phone: "", message: "" };
   });
   const [submitted, setSubmitted] = useState(false);
-
-  // ✅ PERSISTENCE: Load form data from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem("contact-form");
-    if (saved) {
-      setFormData(JSON.parse(saved));
-    }
-  }, []);
 
   // ✅ PERSISTENCE: Save to localStorage whenever form changes
   useEffect(() => {
@@ -38,7 +30,7 @@ export function Contact() {
     // ✅ CLEAR STORAGE after successful submission
     localStorage.removeItem("contact-form");
     setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "",message:"", });
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   return (

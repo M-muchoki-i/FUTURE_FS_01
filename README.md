@@ -5,6 +5,7 @@ A single-page portfolio dashboard built with React + Vite, featuring nested rout
 ## 🚀 About
 
 This project is a personal portfolio website showcasing:
+
 - Home landing page with call-to-action and resume download
 - About section with bio + skills cards
 - Projects spotlight (animal adoption group project)
@@ -46,41 +47,48 @@ The app is implemented as a dashboard with a sidebar (desktop + mobile), and pag
 ## 📌 Routing
 
 Routes are defined in `main.jsx`:
-- `/` -> `Dashboard` (layout wrapper)
-- `/Home` -> `Home`
-- `/About` -> `About`
-- `/Projects` -> `Projects`
-- `/Contact` -> `Contact`
+
+- `/` -> index route -> `Home`
+- `/home` -> `Home`
+- `/about` -> `About`
+- `/projects` -> `Projects`
+- `/contact` -> `Contact`
 
 `Dashboard` provides `Sidebar` + top bar + `main` content area with `<Outlet />`.
 
 ## 🧠 Component Details
 
 ### `Dashboard`
+
 - state: `sidebarOpen`
 - passes `routes` array to `Sidebar` (path, label, icon path)
 - topbar has button to toggle mobile sidebar
 
 ### `Sidebar`
+
 - `isOpen` and `onClose` props
 - uses `useLocation` to highlight active link
 - body scroll lock when modal sidebar open (mobile)
 - nav links use `Link` from router
 
 ### `Home`
+
 - hero section with name, role, CTA to `About`
 - download link to resume asset
 
 ### `About`
+
 - `skills` constant array (list of technologies + level)
 - displays two columns: profile + skills cards
 - download button, back to home link
 
 ### `Projects`
+
 - static project card for animal adoption project
 - external demo + repo link
 
 ### `Contact`
+
 - state: `formData`, `submitted`
 - localStorage persistence:
   - load on mount (`useEffect`)
